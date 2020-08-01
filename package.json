@@ -18,7 +18,14 @@
     "gulp-webserver": "^0.9.1"
   },
   "dependencies": {
+    "babelify": "^10.0.0",
     "del": "^5.1.0",
-    "gulp-image": "^6.2.1"
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-bro": "^2.0.0",
+    "gulp-csso": "^4.0.1",
+    "gulp-image": "^6.2.1",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^4.14.1",
+    "uglifyify": "^5.0.2"
   }
 }
