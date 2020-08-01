@@ -1,8 +1,10 @@
+//import stuffs
 import gulp from "gulp";
 // const gulp = require("gulp");
 import gpug from "gulp-pug";
 import del from "del";
 import ws from "gulp-webserver";
+import image from "gulp-image";
 
 const routes = {
   pug: {
@@ -10,8 +12,17 @@ const routes = {
     src: "src/*.pug",
     dest: "build",
   },
+  img: {
+    src: "src/img/*",
+    dest: "build/img",
+  },
 };
 
+//img opt
+const img = () =>
+  gulp.src(routes.img.src).pipe(image()).pipe(gulp.dest(routes.img.dest));
+
+//pug > html
 const pug = () =>
   gulp.src(routes.pug.src).pipe(gpug()).pipe(gulp.dest(routes.pug.dest));
 
@@ -22,8 +33,11 @@ const webserver = () =>
 
 const watch = () => {
   gulp.watch(routes.pug.watch, pug);
+  gulp.watch(routes.img.src, img);
 };
-const prepare = gulp.series([clean]);
+
+//dev process
+const prepare = gulp.series([clean], img);
 
 const assets = gulp.series([pug]);
 
